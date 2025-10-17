@@ -1,0 +1,55 @@
+package templates
+
+import "github.com/ReLaMi96/gobaas/validators"
+
+templ Login(v validators.AuthFormValidator) {
+    <html lang="en" data-theme="dark">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js"></script>
+            <link rel="stylesheet" href="/static/css/app.css">
+        </head>
+        <body>
+            <div id="auth-form" class="flex flex-col justify-center items-center h-screen">
+                <form id="login-form">
+                    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                            <legend class="fieldset-legend">Login</legend>
+
+                            <label class="label">Email</label>
+                            <input id="email" hx-preserve name="email" type="email" class="input" placeholder="Email" value={ v.Email } required/>
+                            if v.Emailempty {
+                                <div class="text-error text-sm mt-1">Email is required</div>
+                            }
+
+                            <label class="label">Password</label>
+                            <input id="password" hx-preserve="true" name="password" type="password" class="input" placeholder="Password" required/>
+                            if v.Passwordempty {
+                                <div class="text-error text-sm mt-1">Password is required</div>
+                            }
+                            if v.Confirmbad {
+                                <div class="text-error text-sm mt-1">Wrong password or email address</div>
+                            }
+
+                            <button 
+                                class="btn btn-primary mt-4"
+                                hx-post="/login-try"
+                                hx-target="body"
+                                hx-include="[id='login-form']"
+                            >
+                                Login
+                            </button>
+                        </fieldset>
+                </form>
+                <button 
+                    class="btn btn-outline btn-primary mt-2" 
+                    type="button"
+                    hx-get="/create-account-form"
+                    hx-target="body"
+                >
+                    Create account
+                </button>
+            </div>
+        </body>
+    </html>
+
+}

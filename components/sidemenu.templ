@@ -1,0 +1,38 @@
+package components
+
+templ Sidemenu(contents templ.Component) {
+	<div class="flex flex-col">
+		<div class="drawer drawer-open flex-1">
+			<input id="my-drawer-4" type="checkbox" checked class="drawer-toggle"/>
+			<div class="drawer-content m-2 rounded-2xl ml-0 max-h-98/100">
+				<div id="content">
+					@contents
+				</div>
+			</div>
+			<div class="drawer-side is-drawer-close:overflow-visible">
+				<label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+				<div class="is-drawer-close:w-14 is-drawer-open:w-64 flex flex-col items-start min-h-98/100 bg-primary text-white rounded-2xl m-2">
+					<div class="m-2 is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Open">
+						<label for="my-drawer-4" class="btn btn-ghost btn-sm rounded-2xl drawer-button is-drawer-open:rotate-y-180">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 24 24"
+								stroke-linejoin="round"
+								stroke-linecap="round"
+								stroke-width="2"
+								fill="none"
+								stroke="currentColor"
+								class="inline-block size-4 my-1.5"
+							>
+								<path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+								<path d="M9 4v16"></path>
+								<path d="M14 10l2 2l-2 2"></path>
+							</svg>
+						</label>
+					</div>
+					@MenuItems()
+				</div>
+			</div>
+		</div>
+	</div>
+}

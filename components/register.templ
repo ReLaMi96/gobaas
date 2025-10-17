@@ -1,0 +1,51 @@
+package components
+
+import "github.com/ReLaMi96/gobaas/validators"
+
+templ Register(v validators.AuthFormValidator) {
+    <div id="auth-form" class="flex flex-col justify-center items-center h-screen">
+        <form id="create-account-form">
+            <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+                    <legend class="fieldset-legend">Create account</legend>
+
+                    <label class="label">Email</label>
+                    <input hx-preserve id="email" name="email" type="email" class="input" placeholder="Email" value={ v.Email } required/>
+                    if v.Emailempty {
+                        <div class="text-error text-sm mt-1">Email is required</div>
+                    }
+                    if v.Exists {
+                        <div class="text-error text-sm mt-1">Email already exists</div>
+                    }
+
+                    <label class="label">Password</label>
+                    <input id="password" hx-preserve="true" name="password" type="password" class="input" placeholder="Password" required/>
+                    if v.Passwordempty {
+                        <div class="text-error text-sm mt-1">Password is required</div>
+                    }
+
+                    <label class="label">Confirm Password</label>
+                    <input id="cpassword" hx-preserve="true" name="confirm-password" type="password" class="input" placeholder="Password" required/>
+                    if v.Confirmbad {
+                        <div class="text-error text-sm mt-1">Confirm password is not matching</div>
+                    }
+
+                    <button 
+                        class="btn btn-primary mt-4"
+                        hx-post="/create-account"
+                        hx-target="body"
+                        hx-include="[id='create-account-form']"
+                    >
+                        Create account
+                    </button>
+                </fieldset>
+        </form>
+        <button 
+            class="btn btn-outline btn-primary mt-2" 
+            type="button"
+            hx-get="/login"
+            hx-target="body"
+        >
+            Login
+        </button>
+    </div>
+}

@@ -1,0 +1,16 @@
+package templates
+
+import "github.com/ReLaMi96/gobaas/components"
+
+templ Dashboard() {
+    <html lang="en" data-theme="dark">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js"></script>
+            <link rel="stylesheet" href="/static/css/app.css">
+        </head>
+        <body>
+            @components.Sidemenu(components.Nil())
+        </body>
+    </html>
+}
