@@ -1,0 +1,44 @@
+package components
+
+import "github.com/ReLaMi96/gobaas/utils"
+
+templ DBdetails(d utils.DBdetails) {
+	<div class="stats stats-vertical shadow w-full place-items-center">
+		<div class="stat">
+			<div class="stat-title">Database</div>
+			<div class="stat-value">{d.DBname}</div>
+		</div>
+		<div class="stat">
+			<div class="stat-title">Version</div>
+			<div class="stat-value">{d.DBversion}</div>
+		</div>
+		<div class="stat">
+			<div class="stat-title">Host</div>
+			<div class="stat-value">{d.Host}</div>
+		</div>
+		<div class="stat">
+			<div class="stat-title">Port</div>
+			<div class="stat-value">{d.Port}</div>
+		</div>
+		<div class="stat">
+			<div class="stat-title">SSL Mode</div>
+			<div class="stat-value">{d.SSLmode}</div>
+		</div>
+		<div class="stat">
+			<div class="stat-title">Uptime</div>
+			<div class="stat-value">{d.Uptime}</div>
+		</div>
+		<div class="stat">
+			<div class="stat-title">CPU</div>
+			<div class="stat-value">{d.CPU}</div>
+		</div>
+		<div class="stat">
+			<div class="stat-title">RAM</div>
+			<div class="stat-value">{d.RAM}</div>
+		</div>
+		<div class="stat">
+			<div class="stat-title">Space</div>
+			<div class="stat-value">{d.Space}</div>
+		</div>
+	</div>
+}

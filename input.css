@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
 @plugin "daisyui" {
   themes: corporate,dark;
 }

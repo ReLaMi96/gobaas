@@ -1,12 +1,12 @@
 package components
 
-templ Sidemenu(contents templ.Component) {
+templ Sidemenu(view templ.Component) {
 	<div class="flex flex-col">
 		<div class="drawer drawer-open flex-1">
 			<input id="my-drawer-4" type="checkbox" checked class="drawer-toggle"/>
 			<div class="drawer-content m-2 rounded-2xl ml-0 max-h-98/100">
 				<div id="content">
-					@contents
+					@view
 				</div>
 			</div>
 			<div class="drawer-side is-drawer-close:overflow-visible">

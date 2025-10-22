@@ -9,6 +9,7 @@ import (
 func SetRoutes(app *echo.Echo, db *gorm.DB) {
 
 	authHandler := handlers.UserAuthHandler{DB: db}
+	baseHandler := handlers.BaseHandler{DB: db}
 	dashHandler := handlers.DashboardHandler{DB: db}
 
 	protected := app.Group("")
@@ -19,6 +20,7 @@ func SetRoutes(app *echo.Echo, db *gorm.DB) {
 	app.POST("/create-account", authHandler.CreateAccount)
 	app.POST("/login-try", authHandler.Login)
 
-	protected.GET("/", dashHandler.Dashboard)
+	protected.GET("/", baseHandler.Base)
+	protected.GET("/dashboard", dashHandler.Dashboard)
 
 }
