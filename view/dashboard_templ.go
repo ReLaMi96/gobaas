@@ -13,7 +13,7 @@ import (
 	"github.com/ReLaMi96/gobaas/utils"
 )
 
-func Dashboard(dbdetails utils.DBdetails) templ.Component {
+func Dashboard(dbdetails utils.DBdetails, queryStats []components.QueryPerf) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -34,7 +34,7 @@ func Dashboard(dbdetails utils.DBdetails) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex h-screen\"><div class=\"w-1/6 shadow-md p-4 overflow-y-auto\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex max-h-98/100\"><div class=\"w-1/6 shadow-md p-0 overflow-y-auto\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -42,7 +42,23 @@ func Dashboard(dbdetails utils.DBdetails) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"flex-1 p-4 flex flex-col gap-4\"><div class=\"bg-primary rounded-lg shadow-md p-4 h-16 flex items-center\"><div class=\"flex gap-2\"><button class=\"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600\">Start</button> <button class=\"px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600\">Stop</button> <button class=\"px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600\">Restart</button></div></div><div class=\"flex-1 flex flex-col gap-4\"><div class=\"flex-1 bg-blue-100 rounded-lg shadow-md p-4 flex items-center justify-center\"><span class=\"text-gray-600 text-lg\">Usage Graph (Coming Soon)</span></div><div class=\"flex-1 bg-green-100 rounded-lg shadow-md p-4 flex items-center justify-center\"><span class=\"text-gray-600 text-lg\">Logs (Coming Soon)</span></div></div></div></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"flex-1 p-4 flex flex-col gap-4 w-5/6 max-h-98/100\"><div class=\"bg-primary rounded-lg shadow-md p-4 h-16 flex items-center\"><div class=\"flex gap-2\"><button class=\"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600\">Start</button> <button class=\"px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600\">Stop</button> <button class=\"px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600\">Restart</button></div></div><div class=\"flex-1 flex flex-col gap-4 max-h-98/100\"><div class=\"flex-1 rounded-lg shadow-md p-0 flex items-center justify-center overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = components.QueryStats(queryStats).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><div class=\"flex-1 rounded-lg shadow-md p-0 flex items-center justify-center overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = components.QueryStats(queryStats).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

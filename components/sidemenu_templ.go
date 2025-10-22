@@ -29,7 +29,7 @@ func Sidemenu(view templ.Component) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex flex-col\"><div class=\"drawer drawer-open flex-1\"><input id=\"my-drawer-4\" type=\"checkbox\" checked class=\"drawer-toggle\"><div class=\"drawer-content m-2 rounded-2xl ml-0 max-h-98/100\"><div id=\"content\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex flex-col\"><div class=\"drawer drawer-open flex-1 max-h-screen\"><input id=\"my-drawer-4\" type=\"checkbox\" checked class=\"drawer-toggle\"><div class=\"drawer-content m-2 rounded-2xl ml-0 mb-0 max-h-98/100 overflow-hidden\"><div id=\"content\" class=\"max-h-screen\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -13,6 +13,7 @@ import (
 )
 
 type DBdetails struct {
+	Status    string
 	Host      string
 	Port      string
 	DBname    string
@@ -91,7 +92,13 @@ func GetDBdetails(db *gorm.DB) (*DBdetails, error) {
 		return nil, err
 	}
 
+	status, err := CheckDatabaseHealth(db)
+	if err != nil {
+		return nil, err
+	}
+
 	DBdetails := &DBdetails{
+		Status:    status,
 		DBname:    dbname,
 		DBversion: dbversion,
 		Host:      host,
@@ -182,4 +189,33 @@ func GetSystemDiskSpace(db *gorm.DB) (string, error) {
 		return "", err
 	}
 	return fmt.Sprintf("%.0f%%", diskStat.UsedPercent), nil
+}
+
+func CheckDatabaseHealth(db *gorm.DB) (string, error) {
+	sqlDB, err := db.DB()
+	if err != nil {
+		return "Disconnected", err
+	}
+
+	if err := sqlDB.Ping(); err != nil {
+		return "Disconnected", err
+	}
+
+	return "Connected", nil
+}
+
+func Stats(name string, db *gorm.DB) (string, error) {
+
+	switch name {
+	case "uptime":
+		return GetDatabaseUptime(db)
+	case "cpu":
+		return GetSystemCPU(db)
+	case "ram":
+		return GetSystemRAM(db)
+	case "space":
+		return GetSystemDiskSpace(db)
+	}
+
+	return "", nil
 }

@@ -2,10 +2,10 @@ package components
 
 templ Sidemenu(view templ.Component) {
 	<div class="flex flex-col">
-		<div class="drawer drawer-open flex-1">
+		<div class="drawer drawer-open flex-1 max-h-screen">
 			<input id="my-drawer-4" type="checkbox" checked class="drawer-toggle"/>
-			<div class="drawer-content m-2 rounded-2xl ml-0 max-h-98/100">
-				<div id="content">
+			<div class="drawer-content m-2 rounded-2xl ml-0 mb-0 max-h-98/100 overflow-hidden">
+				<div id="content" class="max-h-screen">
 					@view
 				</div>
 			</div>

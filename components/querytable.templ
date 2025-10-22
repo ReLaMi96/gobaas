@@ -1,0 +1,38 @@
+package components
+
+type QueryPerf struct {
+	Query         string
+	Calls         int
+	TotalExecTime float64
+	MeanExecTime  float64
+	Rows          int
+}
+
+templ QueryStats(data []QueryPerf) {
+	<div class="overflow-x-scroll max-h-98/100">
+		<table class="table max-h-98/100 w-full">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Query</th>
+					<th>Number of Calls</th>
+					<th>Total Execution Time</th>
+					<th>Mean Execution Time</th>
+					<th>Affected Rows</th>
+				</tr>
+			</thead>
+			<tbody>
+				for i, item := range data {
+					<tr class="hover:bg-base-300">
+						<th>{i + 1}</th>
+						<td>{item.Query}</td>
+						<td>{item.Calls}</td>
+						<td>{item.TotalExecTime}</td>
+						<td>{item.MeanExecTime}</td>
+						<td>{item.Rows}</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+}

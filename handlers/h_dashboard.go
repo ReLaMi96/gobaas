@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"github.com/ReLaMi96/gobaas/components"
 	"github.com/ReLaMi96/gobaas/utils"
 	"github.com/ReLaMi96/gobaas/view"
 	"github.com/labstack/echo/v4"
@@ -18,5 +19,30 @@ func (h DashboardHandler) Dashboard(c echo.Context) error {
 		return err
 	}
 
-	return utils.Render(c, view.Dashboard(*dbdetails))
+	queryStats, err := QueryPerfRead(*h.DB)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, view.Dashboard(*dbdetails, queryStats))
+}
+
+func (h DashboardHandler) Stats(c echo.Context) error {
+	name := c.Param("name")
+	result, err := utils.Stats(name, h.DB)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, components.Stats(result))
+}
+
+func (h DashboardHandler) Status(c echo.Context) error {
+
+	status, err := utils.CheckDatabaseHealth(h.DB)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, components.Status(status))
 }
