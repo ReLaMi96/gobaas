@@ -10,10 +10,11 @@ import templruntime "github.com/a-h/templ/runtime"
 
 import (
 	"github.com/ReLaMi96/gobaas/components"
+	"github.com/ReLaMi96/gobaas/models"
 	"github.com/ReLaMi96/gobaas/utils"
 )
 
-func Dashboard(dbdetails utils.DBdetails, queryStats []components.QueryPerf) templ.Component {
+func Dashboard(dbdetails utils.DBdetails, queryStats []components.QueryPerf, stats []models.SingleStat) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -46,7 +47,7 @@ func Dashboard(dbdetails utils.DBdetails, queryStats []components.QueryPerf) tem
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = components.ConnectionChart().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.StatBoard(stats).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

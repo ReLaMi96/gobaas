@@ -1,0 +1,19 @@
+package components
+
+import "github.com/ReLaMi96/gobaas/models"
+
+templ StatBoard(stats []models.SingleStat) {
+    for _, stat := range stats {
+        @SingleStat(stat)
+    }
+}
+
+templ SingleStat(stat models.SingleStat) {
+	<div class="stats shadow">
+		<div class="stat">
+			<div class="stat-title">{stat.Title}</div>
+			<div class="stat-value">{stat.Value}</div>
+			<div class="stat-desc">{stat.Description}</div>
+		</div>
+	</div>
+}

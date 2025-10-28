@@ -25,5 +25,10 @@ func (h BaseHandler) Base(c echo.Context) error {
 		return err
 	}
 
-	return utils.Render(c, templates.Base(view.Dashboard(*dbdetails, queryStats)))
+	statBoard, err := sql.SchemaStats(*h.DB)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, templates.Base(view.Dashboard(*dbdetails, queryStats, statBoard)))
 }

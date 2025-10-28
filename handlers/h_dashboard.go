@@ -25,7 +25,12 @@ func (h DashboardHandler) Dashboard(c echo.Context) error {
 		return err
 	}
 
-	return utils.Render(c, view.Dashboard(*dbdetails, queryStats))
+	statBoard, err := sql.SchemaStats(*h.DB)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, view.Dashboard(*dbdetails, queryStats, statBoard))
 }
 
 func (h DashboardHandler) Stats(c echo.Context) error {
