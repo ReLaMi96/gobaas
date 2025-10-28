@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"github.com/ReLaMi96/gobaas/sql"
 	"github.com/ReLaMi96/gobaas/templates"
 	"github.com/ReLaMi96/gobaas/utils"
 	"github.com/ReLaMi96/gobaas/view"
@@ -14,12 +15,12 @@ type BaseHandler struct {
 
 func (h BaseHandler) Base(c echo.Context) error {
 
-	dbdetails, err := utils.GetDBdetails(h.DB)
+	dbdetails, err := sql.GetDBdetails(h.DB)
 	if err != nil {
 		return err
 	}
 
-	queryStats, err := QueryPerfRead(*h.DB)
+	queryStats, err := sql.QueryPerfRead(*h.DB)
 	if err != nil {
 		return err
 	}

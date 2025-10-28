@@ -11,20 +11,20 @@ templ MenuItems() {
 				data-tip="Dashboard"
 			>
 				<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				stroke-linejoin="round"
-				stroke-linecap="round"
-				stroke-width="2"
-				fill="none"
-				stroke="currentColor"
-				class="inline-block size-4 my-1.5"
-			>
-				<rect x="3" y="3" width="7" height="7"></rect>
-				<rect x="14" y="3" width="7" height="7"></rect>
-				<rect x="14" y="14" width="7" height="7"></rect>
-				<rect x="3" y="14" width="7" height="7"></rect>
-			</svg>
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					stroke-linejoin="round"
+					stroke-linecap="round"
+					stroke-width="2"
+					fill="none"
+					stroke="currentColor"
+					class="inline-block size-4 my-1.5"
+				>
+					<rect x="3" y="3" width="7" height="7"></rect>
+					<rect x="14" y="3" width="7" height="7"></rect>
+					<rect x="14" y="14" width="7" height="7"></rect>
+					<rect x="3" y="14" width="7" height="7"></rect>
+				</svg>
 				<span class="is-drawer-close:hidden">Dashboard</span>
 			</button>
 		</li>
@@ -37,24 +37,55 @@ templ MenuItems() {
 				data-tip="Tables"
 			>
 				<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				stroke-linejoin="round"
-				stroke-linecap="round"
-				stroke-width="2"
-				fill="none"
-				stroke="currentColor"
-				class="inline-block size-4 my-1.5"
-			>
-				<path d="M3 6h18"></path>
-				<path d="M3 12h18"></path>
-				<path d="M3 18h18"></path>
-				<path d="M3 6v12"></path>
-				<path d="M9 6v12"></path>
-				<path d="M15 6v12"></path>
-				<path d="M21 6v12"></path>
-			</svg>
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					stroke-linejoin="round"
+					stroke-linecap="round"
+					stroke-width="2"
+					fill="none"
+					stroke="currentColor"
+					class="inline-block size-4 my-1.5"
+				>
+					<path d="M3 6h18"></path>
+					<path d="M3 12h18"></path>
+					<path d="M3 18h18"></path>
+					<path d="M3 6v12"></path>
+					<path d="M9 6v12"></path>
+					<path d="M15 6v12"></path>
+					<path d="M21 6v12"></path>
+				</svg>
 				<span class="is-drawer-close:hidden">Tables</span>
+			</button>
+		</li>
+		<li>
+			<button
+				hx-get="/"
+				hx-target="body"
+				hx-push-url="true"
+				class="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+				data-tip="Extensions"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					stroke-linejoin="round"
+					stroke-linecap="round"
+					stroke-width="2"
+					fill="none"
+					stroke="currentColor"
+					class="inline-block size-4 my-1.5"
+				>
+					<path d="M12 2v4"></path>
+					<path d="M12 18v4"></path>
+					<path d="M4.93 4.93l2.83 2.83"></path>
+					<path d="M16.24 16.24l2.83 2.83"></path>
+					<path d="M2 12h4"></path>
+					<path d="M18 12h4"></path>
+					<path d="M4.93 19.07l2.83-2.83"></path>
+					<path d="M16.24 7.76l2.83-2.83"></path>
+					<circle cx="12" cy="12" r="3"></circle>
+				</svg>
+				<span class="is-drawer-close:hidden">Extensions</span>
 			</button>
 		</li>
 		<li>
@@ -66,23 +97,23 @@ templ MenuItems() {
 				data-tip="Performance"
 			>
 				<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				stroke-linejoin="round"
-				stroke-linecap="round"
-				stroke-width="2"
-				fill="none"
-				stroke="currentColor"
-				class="inline-block size-4 my-1.5"
-			>
-				<path d="M3 6h18"></path>
-				<path d="M3 12h18"></path>
-				<path d="M3 18h18"></path>
-				<path d="M3 6v12"></path>
-				<path d="M9 6v12"></path>
-				<path d="M15 6v12"></path>
-				<path d="M21 6v12"></path>
-			</svg>
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					stroke-linejoin="round"
+					stroke-linecap="round"
+					stroke-width="2"
+					fill="none"
+					stroke="currentColor"
+					class="inline-block size-4 my-1.5"
+				>
+					<path d="M3 6h18"></path>
+					<path d="M3 12h18"></path>
+					<path d="M3 18h18"></path>
+					<path d="M3 6v12"></path>
+					<path d="M9 6v12"></path>
+					<path d="M15 6v12"></path>
+					<path d="M21 6v12"></path>
+				</svg>
 				<span class="is-drawer-close:hidden">Performance</span>
 			</button>
 		</li>
@@ -95,21 +126,21 @@ templ MenuItems() {
 				data-tip="Functions"
 			>
 				<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				stroke-linejoin="round"
-				stroke-linecap="round"
-				stroke-width="2"
-				fill="none"
-				stroke="currentColor"
-				class="inline-block size-4 my-1.5"
-			>
-				<path d="M4 4h16v16H4z"></path>
-				<path d="M9 9h6"></path>
-				<path d="M9 15h3"></path>
-				<circle cx="6.5" cy="9.5" r="0.5"></circle>
-				<circle cx="6.5" cy="15.5" r="0.5"></circle>
-			</svg>
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					stroke-linejoin="round"
+					stroke-linecap="round"
+					stroke-width="2"
+					fill="none"
+					stroke="currentColor"
+					class="inline-block size-4 my-1.5"
+				>
+					<path d="M4 4h16v16H4z"></path>
+					<path d="M9 9h6"></path>
+					<path d="M9 15h3"></path>
+					<circle cx="6.5" cy="9.5" r="0.5"></circle>
+					<circle cx="6.5" cy="15.5" r="0.5"></circle>
+				</svg>
 				<span class="is-drawer-close:hidden">Functions</span>
 			</button>
 		</li>
@@ -122,18 +153,18 @@ templ MenuItems() {
 				data-tip="Policy"
 			>
 				<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				stroke-linejoin="round"
-				stroke-linecap="round"
-				stroke-width="2"
-				fill="none"
-				stroke="currentColor"
-				class="inline-block size-4 my-1.5"
-			>
-				<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-				<path d="M9 12l2 2 4-4"></path>
-			</svg>
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					stroke-linejoin="round"
+					stroke-linecap="round"
+					stroke-width="2"
+					fill="none"
+					stroke="currentColor"
+					class="inline-block size-4 my-1.5"
+				>
+					<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+					<path d="M9 12l2 2 4-4"></path>
+				</svg>
 				<span class="is-drawer-close:hidden">Policy</span>
 			</button>
 		</li>
@@ -146,23 +177,23 @@ templ MenuItems() {
 				data-tip="Cron"
 			>
 				<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				stroke-linejoin="round"
-				stroke-linecap="round"
-				stroke-width="2"
-				fill="none"
-				stroke="currentColor"
-				class="inline-block size-4 my-1.5"
-			>
-				<circle cx="12" cy="12" r="10"></circle>
-				<polyline points="12,6 12,12 16,14"></polyline>
-			</svg>
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 24 24"
+					stroke-linejoin="round"
+					stroke-linecap="round"
+					stroke-width="2"
+					fill="none"
+					stroke="currentColor"
+					class="inline-block size-4 my-1.5"
+				>
+					<circle cx="12" cy="12" r="10"></circle>
+					<polyline points="12,6 12,12 16,14"></polyline>
+				</svg>
 				<span class="is-drawer-close:hidden">Cron</span>
 			</button>
 		</li>
-				</ul>
-			<ul class="menu w-full">
+	</ul>
+	<ul class="menu w-full">
 		<li>
 			<button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">
 				<svg

@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/ReLaMi96/gobaas/models"
+	"github.com/ReLaMi96/gobaas/sql"
 	"github.com/ReLaMi96/gobaas/templates"
 	"github.com/ReLaMi96/gobaas/utils"
 	"github.com/ReLaMi96/gobaas/validators"
@@ -41,7 +42,7 @@ func (h UserAuthHandler) Login(c echo.Context) error {
 		Username: h.Email,
 	}
 
-	result, err := UserReadRow(d, *h.DB)
+	result, err := sql.UserReadRow(d, *h.DB)
 	if errors.Is(err, gorm.ErrRecordNotFound) {
 		v.Confirmbad = true
 		return utils.Render(c, templates.Login(v))
@@ -102,7 +103,7 @@ func WriteCookie(c echo.Context, u models.User, db gorm.DB) error {
 		UserID:     u.ID,
 	}
 
-	SessionWrite(d, db)
+	sql.SessionWrite(d, db)
 
 	return nil
 }
@@ -136,7 +137,7 @@ func (h UserAuthHandler) CreateAccount(c echo.Context) error {
 		Username: h.Email,
 	}
 
-	result, err := UserRead(d, *h.DB)
+	result, err := sql.UserRead(d, *h.DB)
 	if err != nil {
 		return err
 	}
@@ -163,7 +164,7 @@ func (h UserAuthHandler) CreateAccount(c echo.Context) error {
 		return utils.Render(c, templates.Register(v))
 	}
 
-	UserWrite(d, *h.DB)
+	sql.UserWrite(d, *h.DB)
 
 	return utils.Render(c, templates.Login(validators.AuthFormValidator{}))
 }
@@ -184,7 +185,7 @@ func (h UserAuthHandler) SessionHandler(next echo.HandlerFunc) echo.HandlerFunc 
 			Sessionkey: cookie.Value,
 		}
 
-		result, err := SessionReadRow(d, *h.DB)
+		result, err := sql.SessionReadRow(d, *h.DB)
 		if err != nil {
 			if c.Request().Header.Get("HX-Request") == "true" {
 				c.Response().Header().Set("HX-Redirect", "/login")
@@ -203,7 +204,7 @@ func (h UserAuthHandler) SessionHandler(next echo.HandlerFunc) echo.HandlerFunc 
 		}
 
 		if result.Sessionkey == cookie.Value {
-			SessionUpdate(d, *h.DB)
+			sql.SessionUpdate(d, *h.DB)
 			return next(c)
 		}
 

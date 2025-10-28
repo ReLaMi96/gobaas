@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/ReLaMi96/gobaas/components"
+	"github.com/ReLaMi96/gobaas/sql"
 	"github.com/ReLaMi96/gobaas/utils"
 	"github.com/ReLaMi96/gobaas/view"
 	"github.com/labstack/echo/v4"
@@ -14,12 +15,12 @@ type DashboardHandler struct {
 
 func (h DashboardHandler) Dashboard(c echo.Context) error {
 
-	dbdetails, err := utils.GetDBdetails(h.DB)
+	dbdetails, err := sql.GetDBdetails(h.DB)
 	if err != nil {
 		return err
 	}
 
-	queryStats, err := QueryPerfRead(*h.DB)
+	queryStats, err := sql.QueryPerfRead(*h.DB)
 	if err != nil {
 		return err
 	}
@@ -29,7 +30,7 @@ func (h DashboardHandler) Dashboard(c echo.Context) error {
 
 func (h DashboardHandler) Stats(c echo.Context) error {
 	name := c.Param("name")
-	result, err := utils.Stats(name, h.DB)
+	result, err := sql.Stats(name, h.DB)
 	if err != nil {
 		return err
 	}
@@ -39,7 +40,7 @@ func (h DashboardHandler) Stats(c echo.Context) error {
 
 func (h DashboardHandler) Status(c echo.Context) error {
 
-	status, err := utils.CheckDatabaseHealth(h.DB)
+	status, err := sql.CheckDatabaseHealth(h.DB)
 	if err != nil {
 		return err
 	}
