@@ -3,7 +3,12 @@ package components
 import "github.com/ReLaMi96/gobaas/utils"
 
 templ DBdetails(d utils.DBdetails) {
-	<div class="stats stats-vertical shadow w-full place-items-center max-h-98/100">
+	<div 
+		class="stats stats-vertical shadow w-full place-items-center max-h-98/100"
+		hx-get="/stat/all"
+		hx-trigger="every 5s"
+		hx-swap="outerHTML"
+		>
 		<div class="stat">
 			<div class="stat-title">Database</div>
 			<div class="stat-value">
@@ -31,29 +36,21 @@ templ DBdetails(d utils.DBdetails) {
 			<div class="stat-title">Uptime</div>
 			<div 
 				class="stat-value"
-				hx-get="/stat/uptime"
-				hx-trigger="every 5s"
 			>{d.Uptime}</div>
 		</div>
 		<div class="stat">
 			<div class="stat-title">CPU</div>
 			<div class="stat-value"
-				hx-get="/stat/cpu"
-				hx-trigger="every 5s"
 			>{d.CPU}</div>
 		</div>
 		<div class="stat">
 			<div class="stat-title">RAM</div>
 			<div class="stat-value"
-				hx-get="/stat/ram"
-				hx-trigger="every 5s"
 			>{d.RAM}</div>
 		</div>
 		<div class="stat">
 			<div class="stat-title">Space</div>
 			<div class="stat-value"
-				hx-get="/stat/space"
-				hx-trigger="every 5s"
 			>{d.Space}</div>
 		</div>
 	</div>

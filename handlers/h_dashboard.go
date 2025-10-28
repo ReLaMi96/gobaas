@@ -29,13 +29,12 @@ func (h DashboardHandler) Dashboard(c echo.Context) error {
 }
 
 func (h DashboardHandler) Stats(c echo.Context) error {
-	name := c.Param("name")
-	result, err := sql.Stats(name, h.DB)
+	result, err := sql.GetDBdetails(h.DB)
 	if err != nil {
 		return err
 	}
 
-	return utils.Render(c, components.Stats(result))
+	return utils.Render(c, components.DBdetails(*result))
 }
 
 func (h DashboardHandler) Status(c echo.Context) error {

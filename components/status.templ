@@ -4,16 +4,10 @@ templ Status(status string) {
 	switch status {
 		case "Connected":
 			<span
-				hx-get="/stat/db"
-				hx-trigger="every 5s"
-				hx-swap="outerHTML"
 				class="indicator-item indicator-middle indicator-start badge badge-success"
 			></span>
 		case "Disconnected":
 			<span 
-				hx-get="/stat/db"
-				hx-trigger="every 5s"
-				hx-swap="outerHTML"
 				class="indicator-item indicator-middle indicator-start badge badge-error"
 			></span>
 	}

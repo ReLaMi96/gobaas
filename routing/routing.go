@@ -22,6 +22,5 @@ func SetRoutes(app *echo.Echo, db *gorm.DB) {
 
 	protected.GET("/", baseHandler.Base)
 	protected.GET("/dashboard", dashHandler.Dashboard)
-	protected.GET("/stat/:name", dashHandler.Stats)
-	protected.GET("/stat/db", dashHandler.Status)
+	protected.GET("/stat/all", dashHandler.Stats)
 }

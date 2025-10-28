@@ -31,12 +31,12 @@ func Status(status string) templ.Component {
 		ctx = templ.ClearChildren(ctx)
 		switch status {
 		case "Connected":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<span hx-get=\"/stat/db\" hx-trigger=\"every 5s\" hx-swap=\"outerHTML\" class=\"indicator-item indicator-middle indicator-start badge badge-success\"></span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<span class=\"indicator-item indicator-middle indicator-start badge badge-success\"></span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case "Disconnected":
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<span hx-get=\"/stat/db\" hx-trigger=\"every 5s\" hx-swap=\"outerHTML\" class=\"indicator-item indicator-middle indicator-start badge badge-error\"></span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<span class=\"indicator-item indicator-middle indicator-start badge badge-error\"></span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
