@@ -1,40 +1,45 @@
 package view
 
 import (
-    "github.com/ReLaMi96/gobaas/utils"
-    "github.com/ReLaMi96/gobaas/components"
+	"github.com/ReLaMi96/gobaas/components"
 	"github.com/ReLaMi96/gobaas/models"
+	"github.com/ReLaMi96/gobaas/utils"
 )
 
 templ Dashboard(dbdetails utils.DBdetails, queryStats []components.QueryPerf, stats []models.SingleStat) {
-    <div class="flex max-h-98/100">
-        <div class="w-1/6 shadow-md p-0 overflow-y-auto">
-            @components.DBdetails(dbdetails)
-        </div>
-        
-        <div class="flex-1 p-4 flex flex-col gap-4 w-5/6 max-h-98/100">
-            <div class="bg-primary rounded-lg shadow-md p-4 h-16 flex items-center">
-                <div class="flex gap-2">
-                    <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                        Start
-                    </button>
-                    <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-                        Stop
-                    </button>
-                    <button class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">
-                        Restart
-                    </button>
-                </div>
-            </div>
-            
-            <div class="flex-1 flex flex-col gap-4 max-h-98/100">
-                <div class="flex-1 rounded-lg shadow-md p-0 flex items-center justify-center overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100">
-                    @components.StatBoard(stats)
-                </div>
-                <div class="flex-1 rounded-lg shadow-md p-0 flex items-center justify-center overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100">
-                    @components.QueryStats(queryStats)
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="flex max-h-98/100">
+		<div
+			class="w-1/6 shadow-md p-0 overflow-y-auto"
+			hx-get="/stat/all"
+			hx-trigger="load, every 5s"
+			hx-swap="innerHTML"
+		>
+			@components.DBdetails(dbdetails)
+		</div>
+		<div class="flex-1 p-4 flex flex-col gap-4 w-5/6 max-h-98/100">
+			<div class="bg-base-300 rounded-lg shadow-md p-4 h-16 flex items-center">
+				<div class="flex gap-2">
+					<button class="btn btn-primary">
+						Restart
+					</button>
+				</div>
+			</div>
+			<div class="flex-1 flex flex-col gap-4 max-h-98/100">
+				<div
+					class="flex-1 rounded-lg shadow-md p-0 flex overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100 min-h-46/100"
+					hx-get="/stat/schema-stats"
+					hx-trigger="load, every 5s"
+					hx-swap="innerHTML"
+				>
+					@components.StatBoard(stats)
+				</div>
+				<div
+					class="flex-1 rounded-lg shadow-md p-0 flex overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100 min-h-46/100"
+					id="top-queries"		
+				>
+					@components.QueryStats(queryStats)
+				</div>
+			</div>
+		</div>
+	</div>
 }

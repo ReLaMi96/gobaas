@@ -1,0 +1,39 @@
+package handlers
+
+import (
+	"github.com/ReLaMi96/gobaas/components"
+	"github.com/ReLaMi96/gobaas/sql"
+	"github.com/ReLaMi96/gobaas/utils"
+	"github.com/ReLaMi96/gobaas/view"
+	"github.com/labstack/echo/v4"
+	"gorm.io/gorm"
+)
+
+type TableHandler struct {
+	DB *gorm.DB
+}
+
+func (h TableHandler) Tables(c echo.Context) error {
+
+	if c.Request().Header.Get("HX-Request") != "" {
+
+		data, err := sql.TableList(*h.DB)
+		if err != nil {
+			return err
+		}
+
+		return utils.Render(c, view.Tables(data))
+	}
+
+	return BaseHandler{DB: h.DB}.BaseTables(c)
+}
+
+func (h TableHandler) TableList(c echo.Context) error {
+
+	data, err := sql.TableList(*h.DB)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, components.TableList(data))
+}

@@ -12,7 +12,7 @@ type PerformanceHandler struct {
 	DB *gorm.DB
 }
 
-func (h PerformanceHandler) QueryStats(c echo.Context) error {
+func (h PerformanceHandler) TopQueryList(c echo.Context) error {
 
 	stats, err := sql.QueryPerfRead(*h.DB)
 	if err != nil {

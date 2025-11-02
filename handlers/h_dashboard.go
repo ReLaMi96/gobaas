@@ -15,22 +15,18 @@ type DashboardHandler struct {
 
 func (h DashboardHandler) Dashboard(c echo.Context) error {
 
-	dbdetails, err := sql.GetDBdetails(h.DB)
-	if err != nil {
-		return err
+	if c.Request().Header.Get("HX-Request") != "" {
+
+		queryStats, err := sql.QueryPerfRead(*h.DB)
+		if err != nil {
+			return err
+		}
+
+		return utils.Render(c, view.Dashboard(utils.DBdetails{}, queryStats, nil))
 	}
 
-	queryStats, err := sql.QueryPerfRead(*h.DB)
-	if err != nil {
-		return err
-	}
-
-	statBoard, err := sql.SchemaStats(*h.DB)
-	if err != nil {
-		return err
-	}
-
-	return utils.Render(c, view.Dashboard(*dbdetails, queryStats, statBoard))
+	baseHandler := BaseHandler{DB: h.DB}
+	return baseHandler.BaseDashboard(c)
 }
 
 func (h DashboardHandler) Stats(c echo.Context) error {
@@ -50,4 +46,24 @@ func (h DashboardHandler) Status(c echo.Context) error {
 	}
 
 	return utils.Render(c, components.Status(status))
+}
+
+func (h DashboardHandler) TopQueryList(c echo.Context) error {
+
+	queryStats, err := sql.QueryPerfRead(*h.DB)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, components.QueryStats(queryStats))
+}
+
+func (h DashboardHandler) SchemaStats(c echo.Context) error {
+
+	statBoard, err := sql.SchemaStats(*h.DB)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, components.StatBoard(statBoard))
 }

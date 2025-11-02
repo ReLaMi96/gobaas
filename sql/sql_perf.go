@@ -45,22 +45,23 @@ func GetDBdetails(db *gorm.DB) (*utils.DBdetails, error) {
 	if err != nil {
 		return nil, err
 	}
+	//too slow
+	/*
+		cpu, err := GetSystemCPU(db)
+		if err != nil {
+			return nil, err
+		}
 
-	cpu, err := GetSystemCPU(db)
-	if err != nil {
-		return nil, err
-	}
+		ram, err := GetSystemRAM(db)
+		if err != nil {
+			return nil, err
+		}
 
-	ram, err := GetSystemRAM(db)
-	if err != nil {
-		return nil, err
-	}
-
-	space, err := GetSystemDiskSpace(db)
-	if err != nil {
-		return nil, err
-	}
-
+		space, err := GetSystemDiskSpace(db)
+		if err != nil {
+			return nil, err
+		}
+	*/
 	status, err := CheckDatabaseHealth(db)
 	if err != nil {
 		return nil, err
@@ -74,9 +75,9 @@ func GetDBdetails(db *gorm.DB) (*utils.DBdetails, error) {
 		Port:      port,
 		SSLmode:   sslmode,
 		Uptime:    uptime,
-		CPU:       cpu,
-		RAM:       ram,
-		Space:     space,
+		//CPU:       cpu,
+		//RAM:       ram,
+		//Space:     space,
 	}
 
 	return DBdetails, nil

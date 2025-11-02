@@ -4,10 +4,7 @@ import "github.com/ReLaMi96/gobaas/utils"
 
 templ DBdetails(d utils.DBdetails) {
 	<div 
-		class="stats stats-vertical shadow w-full place-items-center max-h-98/100"
-		hx-get="/stat/all"
-		hx-trigger="every 5s"
-		hx-swap="outerHTML"
+		class="stats stats-vertical shadow w-full place-items-center max-h-98/100 min-h-98/100"
 		>
 		<div class="stat">
 			<div class="stat-title">Database</div>

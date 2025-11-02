@@ -37,7 +37,7 @@ func QueryStats(data []QueryPerf) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"overflow-x-scroll max-h-98/100\"><table class=\"table max-h-98/100 w-full\"><thead><tr><th></th><th>Query</th><th>Number of Calls</th><th>Total Execution Time</th><th>Mean Execution Time</th><th>Affected Rows</th></tr></thead> <tbody>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"overflow-x-scroll max-h-98/100 min-h-98/100 w-full\"><table class=\"table max-h-98/100 w-full min-h-98/100\"><thead><tr><th><button class=\"btn btn-square btn-primary place-self-top\" hx-get=\"/stat/top-queries\" hx-trigger=\"click\" hx-swap=\"innerHTML\" hx-target=\"#top-queries\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 4V9H4.58152M4.58152 9C5.24618 7.35892 6.43938 6.00426 7.96462 5.16987C9.48987 4.33548 11.2613 4.06716 12.9823 4.4149C14.7033 4.76264 16.2609 5.69716 17.3884 7.06069C18.5159 8.42422 19.1428 10.1301 19.1667 11.8846C19.1906 13.6392 18.6101 15.3617 17.5129 16.7552C16.4157 18.1487 14.8743 19.1267 13.1613 19.5237C11.4482 19.9207 9.6657 19.7137 8.1209 18.9356C6.57609 18.1574 5.34694 16.8503 4.58152 15.25M4.58152 9H9\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button></th><th>Query</th><th>Number of Calls</th><th>Total Execution Time</th><th>Mean Execution Time</th><th>Affected Rows</th></tr></thead> <tbody>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -49,7 +49,7 @@ func QueryStats(data []QueryPerf) templ.Component {
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(i + 1)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 27, Col: 16}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 38, Col: 16}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -62,7 +62,7 @@ func QueryStats(data []QueryPerf) templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(item.Query)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 28, Col: 21}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 39, Col: 21}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -75,7 +75,7 @@ func QueryStats(data []QueryPerf) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(item.Calls)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 29, Col: 21}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 40, Col: 21}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -88,7 +88,7 @@ func QueryStats(data []QueryPerf) templ.Component {
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(item.TotalExecTime)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 30, Col: 29}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 41, Col: 29}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -101,7 +101,7 @@ func QueryStats(data []QueryPerf) templ.Component {
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(item.MeanExecTime)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 31, Col: 28}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 42, Col: 28}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -114,7 +114,7 @@ func QueryStats(data []QueryPerf) templ.Component {
 			var templ_7745c5c3_Var7 string
 			templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(item.Rows)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 32, Col: 20}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/querytable.templ`, Line: 43, Col: 20}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 			if templ_7745c5c3_Err != nil {

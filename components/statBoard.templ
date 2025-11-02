@@ -9,7 +9,7 @@ templ StatBoard(stats []models.SingleStat) {
 }
 
 templ SingleStat(stat models.SingleStat) {
-	<div class="stats shadow">
+	<div class="stats shadow place-self-start justify-self-start bg-base-300 m-1">
 		<div class="stat">
 			<div class="stat-title">{stat.Title}</div>
 			<div class="stat-value">{stat.Value}</div>

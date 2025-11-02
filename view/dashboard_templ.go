@@ -35,7 +35,7 @@ func Dashboard(dbdetails utils.DBdetails, queryStats []components.QueryPerf, sta
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex max-h-98/100\"><div class=\"w-1/6 shadow-md p-0 overflow-y-auto\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex max-h-98/100\"><div class=\"w-1/6 shadow-md p-0 overflow-y-auto\" hx-get=\"/stat/all\" hx-trigger=\"load, every 5s\" hx-swap=\"innerHTML\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -43,7 +43,7 @@ func Dashboard(dbdetails utils.DBdetails, queryStats []components.QueryPerf, sta
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"flex-1 p-4 flex flex-col gap-4 w-5/6 max-h-98/100\"><div class=\"bg-primary rounded-lg shadow-md p-4 h-16 flex items-center\"><div class=\"flex gap-2\"><button class=\"px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600\">Start</button> <button class=\"px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600\">Stop</button> <button class=\"px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600\">Restart</button></div></div><div class=\"flex-1 flex flex-col gap-4 max-h-98/100\"><div class=\"flex-1 rounded-lg shadow-md p-0 flex items-center justify-center overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div><div class=\"flex-1 p-4 flex flex-col gap-4 w-5/6 max-h-98/100\"><div class=\"bg-base-300 rounded-lg shadow-md p-4 h-16 flex items-center\"><div class=\"flex gap-2\"><button class=\"btn btn-primary\">Restart</button></div></div><div class=\"flex-1 flex flex-col gap-4 max-h-98/100\"><div class=\"flex-1 rounded-lg shadow-md p-0 flex overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100 min-h-46/100\" hx-get=\"/stat/schema-stats\" hx-trigger=\"load, every 5s\" hx-swap=\"innerHTML\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -51,7 +51,7 @@ func Dashboard(dbdetails utils.DBdetails, queryStats []components.QueryPerf, sta
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><div class=\"flex-1 rounded-lg shadow-md p-0 flex items-center justify-center overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div><div class=\"flex-1 rounded-lg shadow-md p-0 flex overflow-y-auto h-5/10 bg-base-200 rounded-2xl max-h-46/100 min-h-46/100\" id=\"top-queries\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
