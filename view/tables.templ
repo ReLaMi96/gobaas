@@ -3,6 +3,16 @@ package view
 import "github.com/ReLaMi96/gobaas/components"
 import "github.com/ReLaMi96/gobaas/models"
 
-templ Tables(data models.TableData) {
-        @components.TableList(data)
+templ Tables(tables models.TableData, columns models.TableData) {
+        <div class="grid grid-cols-12 gap-4 h-screen">
+                <div class="col-span-3">
+                        @components.List(tables)
+                </div>
+                <div class="col-span-3 border-l border-primary pl-4">
+                        @components.ColumnList(columns)
+                </div>
+                <div class="col-span-6">
+                        <!-- Third column content -->
+                </div>
+        </div>
 }

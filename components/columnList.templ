@@ -1,0 +1,57 @@
+package components
+
+import "github.com/ReLaMi96/gobaas/models"
+
+templ ColumnList(data models.TableData) {
+	<div id="column-list" class="overflow-x-scroll max-h-98/100 min-h-98/100">
+		<form class="flex justify-between">
+			<input type="text" placeholder="search column" class="input ml-1"/>
+			<button
+				title="Search"
+				class="btn btn-square btn-primary place-self-end mr-1"
+				hx-get="/tables/table-list"
+				hx-trigger="click"
+				hx-swap="outerHTML"
+				hx-target="#table-list"
+			>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"></circle>
+					<path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</button>
+			<button
+				title="Creat column"
+				class="btn btn-square btn-accent place-self-end"
+				hx-get="/tables/table-list"
+				hx-trigger="click"
+				hx-swap="outerHTML"
+				hx-target="#table-list"
+			>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+					<line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+				</svg>
+			</button>
+		</form>
+		<table class="table max-h-98/100">
+			<thead>
+				<tr>
+					<th></th>
+					for _, col := range data.Columns {
+						<th>{ col }</th>
+					}
+				</tr>
+			</thead>
+			<tbody>
+				for i, row := range data.Rows {
+					<tr class="table-row hover:bg-base-300 max-h-24 min-h-24">
+						<th>{ i + 1 }</th>
+						for _, cell := range row.Cells {
+							<td>{ cell }</td>
+						}
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+}

@@ -30,4 +30,5 @@ func SetRoutes(app *echo.Echo, db *gorm.DB) {
 	protected.GET("/stat/schema-stats", dashHandler.SchemaStats)
 
 	protected.GET("/tables/table-list", tableHandler.TableList)
+	protected.GET("/tables/column-list", tableHandler.ColumnList)
 }

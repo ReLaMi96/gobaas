@@ -17,12 +17,17 @@ func (h TableHandler) Tables(c echo.Context) error {
 
 	if c.Request().Header.Get("HX-Request") != "" {
 
-		data, err := sql.TableList(*h.DB)
+		tables, err := sql.TableList(*h.DB)
 		if err != nil {
 			return err
 		}
 
-		return utils.Render(c, view.Tables(data))
+		columns, err := sql.ColumnList(*h.DB, "", "")
+		if err != nil {
+			return err
+		}
+
+		return utils.Render(c, view.Tables(tables, columns))
 	}
 
 	return BaseHandler{DB: h.DB}.BaseTables(c)
@@ -35,5 +40,18 @@ func (h TableHandler) TableList(c echo.Context) error {
 		return err
 	}
 
-	return utils.Render(c, components.TableList(data))
+	return utils.Render(c, components.List(data))
+}
+
+func (h TableHandler) ColumnList(c echo.Context) error {
+
+	tableName := c.FormValue("tableName")
+	schema := c.FormValue("schema")
+
+	data, err := sql.ColumnList(*h.DB, tableName, schema)
+	if err != nil {
+		return err
+	}
+
+	return utils.Render(c, components.ColumnList(data))
 }

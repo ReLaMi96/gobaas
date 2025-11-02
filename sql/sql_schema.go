@@ -1,6 +1,8 @@
 package sql
 
 import (
+	"fmt"
+
 	"github.com/ReLaMi96/gobaas/models"
 	"gorm.io/gorm"
 )
@@ -79,6 +81,44 @@ func TableList(db gorm.DB) (models.TableData, error) {
 		}
 		row := models.TableRow{
 			Cells: []string{schema, name, tableType},
+		}
+		rows = append(rows, row)
+	}
+
+	result := models.TableData{
+		Columns: columns,
+		Rows:    rows,
+	}
+	return result, nil
+}
+
+func ColumnList(db gorm.DB, table string, schema string) (models.TableData, error) {
+	columns := []string{"Name", "Type", "Nullable"}
+	rows := []models.TableRow{}
+	var col1, col2, col3 string
+
+	sqlrows, err := db.Raw(fmt.Sprintf(`
+		SELECT 
+ 		    column_name,
+   	 		data_type,
+    		is_nullable
+		FROM information_schema.columns 
+		WHERE table_schema = '%s' 
+		AND table_name = '%s'
+		ORDER BY ordinal_position;
+	`, schema, table)).Rows()
+
+	if err != nil {
+		return models.TableData{}, err
+	}
+
+	for sqlrows.Next() {
+		err = sqlrows.Scan(&col1, &col2, &col3)
+		if err != nil {
+			return models.TableData{}, err
+		}
+		row := models.TableRow{
+			Cells: []string{col1, col2, col3},
 		}
 		rows = append(rows, row)
 	}
