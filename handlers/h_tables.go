@@ -17,7 +17,7 @@ func (h TableHandler) Tables(c echo.Context) error {
 
 	if c.Request().Header.Get("HX-Request") != "" {
 
-		tables, err := sql.TableList(*h.DB)
+		tables, err := sql.TableList(*h.DB, "")
 		if err != nil {
 			return err
 		}
@@ -35,7 +35,9 @@ func (h TableHandler) Tables(c echo.Context) error {
 
 func (h TableHandler) TableList(c echo.Context) error {
 
-	data, err := sql.TableList(*h.DB)
+	search := c.FormValue("table-search")
+
+	data, err := sql.TableList(*h.DB, search)
 	if err != nil {
 		return err
 	}

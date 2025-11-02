@@ -35,7 +35,7 @@ func (h BaseHandler) BaseDashboard(c echo.Context) error {
 
 func (h BaseHandler) BaseTables(c echo.Context) error {
 
-	tables, err := sql.TableList(*h.DB)
+	tables, err := sql.TableList(*h.DB, "")
 	if err != nil {
 		return err
 	}

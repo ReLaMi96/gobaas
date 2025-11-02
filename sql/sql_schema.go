@@ -1,8 +1,6 @@
 package sql
 
 import (
-	"fmt"
-
 	"github.com/ReLaMi96/gobaas/models"
 	"gorm.io/gorm"
 )
@@ -54,10 +52,12 @@ func ActiveConnections(db gorm.DB) (models.SingleStat, error) {
 	return result, err
 }
 
-func TableList(db gorm.DB) (models.TableData, error) {
+func TableList(db gorm.DB, search string) (models.TableData, error) {
 	columns := []string{"Schema", "Name", "Type"}
 	rows := []models.TableRow{}
 	var schema, name, tableType string
+
+	search = "%" + search + "%"
 
 	sqlrows, err := db.Raw(`
 		SELECT 
@@ -65,10 +65,11 @@ func TableList(db gorm.DB) (models.TableData, error) {
 			table_name,
 			table_type
 		FROM information_schema.tables 
-		WHERE table_schema = 'public' 
+		WHERE table_schema = 'public'
 		AND table_type = 'BASE TABLE'
+		AND table_name LIKE ?
 		ORDER BY table_name;
-	`).Rows()
+	`, search).Rows()
 
 	if err != nil {
 		return models.TableData{}, err
@@ -97,16 +98,16 @@ func ColumnList(db gorm.DB, table string, schema string) (models.TableData, erro
 	rows := []models.TableRow{}
 	var col1, col2, col3 string
 
-	sqlrows, err := db.Raw(fmt.Sprintf(`
+	sqlrows, err := db.Raw(`
 		SELECT 
  		    column_name,
    	 		data_type,
     		is_nullable
 		FROM information_schema.columns 
-		WHERE table_schema = '%s' 
-		AND table_name = '%s'
+		WHERE table_schema = ? 
+		AND table_name = ?
 		ORDER BY ordinal_position;
-	`, schema, table)).Rows()
+	`, schema, table).Rows()
 
 	if err != nil {
 		return models.TableData{}, err
