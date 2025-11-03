@@ -32,7 +32,7 @@ func List(data models.TableData) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div id=\"table-list\" class=\"overflow-x-scroll max-h-98/100 min-h-98/100\"><form class=\"flex justify-between\"><button title=\"Refresh\" class=\"btn btn-square btn-primary place-self-top\" hx-get=\"/tables/table-list\" hx-trigger=\"click\" hx-swap=\"outerHTML\" hx-target=\"#table-list\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 4V9H4.58152M4.58152 9C5.24618 7.35892 6.43938 6.00426 7.96462 5.16987C9.48987 4.33548 11.2613 4.06716 12.9823 4.4149C14.7033 4.76264 16.2609 5.69716 17.3884 7.06069C18.5159 8.42422 19.1428 10.1301 19.1667 11.8846C19.1906 13.6392 18.6101 15.3617 17.5129 16.7552C16.4157 18.1487 14.8743 19.1267 13.1613 19.5237C11.4482 19.9207 9.6657 19.7137 8.1209 18.9356C6.57609 18.1574 5.34694 16.8503 4.58152 15.25M4.58152 9H9\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button> <input id=\"table-search\" type=\"text\" placeholder=\"search table\" class=\"input ml-1\"> <button title=\"Search\" class=\"btn btn-square btn-primary place-self-end mr-1\" hx-get=\"/tables/table-list\" hx-trigger=\"click\" hx-swap=\"outerHTML\" hx-target=\"#table-list\" hx-include=\"#table-search\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"11\" cy=\"11\" r=\"8\" stroke=\"currentColor\" stroke-width=\"2\"></circle> <path d=\"M21 21l-4.35-4.35\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button> <button title=\"Create table\" class=\"btn btn-square btn-accent place-self-end\" hx-get=\"/tables/table-list\" hx-trigger=\"click\" hx-swap=\"outerHTML\" hx-target=\"#table-list\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></line> <line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></line></svg></button></form><table class=\"table max-h-98/100\"><thead><tr><th></th>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div id=\"table-list\" class=\"overflow-x-scroll max-h-98/100 min-h-98/100\"><form class=\"flex justify-between\"><button title=\"Refresh\" class=\"btn btn-square btn-primary place-self-top\" hx-get=\"/tables/table-list\" hx-trigger=\"click\" hx-swap=\"outerHTML\" hx-target=\"#table-list\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M4 4V9H4.58152M4.58152 9C5.24618 7.35892 6.43938 6.00426 7.96462 5.16987C9.48987 4.33548 11.2613 4.06716 12.9823 4.4149C14.7033 4.76264 16.2609 5.69716 17.3884 7.06069C18.5159 8.42422 19.1428 10.1301 19.1667 11.8846C19.1906 13.6392 18.6101 15.3617 17.5129 16.7552C16.4157 18.1487 14.8743 19.1267 13.1613 19.5237C11.4482 19.9207 9.6657 19.7137 8.1209 18.9356C6.57609 18.1574 5.34694 16.8503 4.58152 15.25M4.58152 9H9\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button> <input hx-preserve=\"true\" name=\"tableSearch\" id=\"tableSearch\" type=\"text\" placeholder=\"search table\" class=\"input ml-1\" hx-get=\"/tables/table-list\" hx-trigger=\"keyup[key=='Enter']\" hx-swap=\"outerHTML\" hx-target=\"#table-list\" hx-include=\"#tableSearch\"> <button type=\"submit\" title=\"Search\" class=\"btn btn-square btn-primary place-self-end mr-1\" hx-get=\"/tables/table-list\" hx-trigger=\"click\" hx-swap=\"outerHTML\" hx-target=\"#table-list\" hx-include=\"#tableSearch\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"11\" cy=\"11\" r=\"8\" stroke=\"currentColor\" stroke-width=\"2\"></circle> <path d=\"M21 21l-4.35-4.35\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button> <button title=\"Create table\" class=\"btn btn-square btn-accent place-self-end\" hx-get=\"/tables/table-list\" hx-trigger=\"click\" hx-swap=\"outerHTML\" hx-target=\"#table-list\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"19\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></line> <line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></line></svg></button></form><table class=\"table max-h-98/100\"><thead><tr><th></th>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -44,7 +44,7 @@ func List(data models.TableData) templ.Component {
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(col)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/List.templ`, Line: 55, Col: 15}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/List.templ`, Line: 68, Col: 15}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -68,7 +68,7 @@ func List(data models.TableData) templ.Component {
 				var templ_7745c5c3_Var3 string
 				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf(`{"tableName":"%s", "schema":"%s"}`, row.Cells[1], row.Cells[0]))
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/List.templ`, Line: 64, Col: 92}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/List.templ`, Line: 77, Col: 93}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 				if templ_7745c5c3_Err != nil {
@@ -81,7 +81,7 @@ func List(data models.TableData) templ.Component {
 				var templ_7745c5c3_Var4 string
 				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(i + 1)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/List.templ`, Line: 69, Col: 18}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/List.templ`, Line: 82, Col: 18}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 				if templ_7745c5c3_Err != nil {
@@ -99,7 +99,7 @@ func List(data models.TableData) templ.Component {
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(cell)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/List.templ`, Line: 71, Col: 18}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `components/List.templ`, Line: 84, Col: 18}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {

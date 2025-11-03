@@ -1,6 +1,8 @@
 package handlers
 
 import (
+	"fmt"
+
 	"github.com/ReLaMi96/gobaas/components"
 	"github.com/ReLaMi96/gobaas/sql"
 	"github.com/ReLaMi96/gobaas/utils"
@@ -35,7 +37,9 @@ func (h TableHandler) Tables(c echo.Context) error {
 
 func (h TableHandler) TableList(c echo.Context) error {
 
-	search := c.FormValue("table-search")
+	search := c.FormValue("tableSearch")
+
+	fmt.Println("Searching for tables with:", search)
 
 	data, err := sql.TableList(*h.DB, search)
 	if err != nil {
